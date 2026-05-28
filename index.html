@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TRANSMISSION // 001</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* IMAGE */
+
+#background{
+    position:fixed;
+    inset:0;
+
+    background-image:url("TRANSMISSION 001 poulpe.jpg");
+    background-size:cover;
+    background-position:center center;
+
+    transform:scale(1);
+
+    transition:transform 20s linear;
+
+    filter:
+    brightness(.55)
+    contrast(1.05);
+}
+
+/* GRAIN */
+
+#grain{
+    position:fixed;
+    inset:0;
+
+    opacity:.07;
+
+    background-image:
+    repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,.08) 0px,
+    rgba(255,255,255,.08) 1px,
+    transparent 1px,
+    transparent 3px);
+}
+
+/* VIGNETTE */
+
+#overlay{
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle,
+    transparent 20%,
+    rgba(0,0,0,.45) 100%);
+}
+
+/* INTRO */
+
+#intro{
+
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    text-align:center;
+
+    z-index:10;
+
+    transition:1.2s;
+}
+
+#intro.hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+/* TITRE */
+
+.small{
+    letter-spacing:6px;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.title{
+    font-size:34px;
+    letter-spacing:10px;
+}
+
+/* BOUTON */
+
+button{
+
+    margin-top:50px;
+
+    background:none;
+
+    border:1px solid rgba(255,255,255,.6);
+
+    color:white;
+
+    padding:14px 34px;
+
+    letter-spacing:4px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+button:hover{
+    background:white;
+    color:black;
+}
+
+/* MESSAGE */
+
+#message{
+
+    position:absolute;
+
+    left:8%;
+    bottom:10%;
+
+    max-width:600px;
+
+    color:white;
+
+    opacity:0;
+
+    transition:3s;
+
+    z-index:5;
+}
+
+#message.visible{
+    opacity:1;
+}
+
+.quote{
+    font-size:28px;
+    line-height:1.4;
+}
+
+.signature{
+    margin-top:30px;
+    letter-spacing:5px;
+    opacity:.8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.quote{
+    font-size:22px;
+}
+
+.title{
+    font-size:24px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="background"></div>
+
+<div id="grain"></div>
+
+<div id="overlay"></div>
+
+<div id="intro">
+
+<div class="small">
+TRANSMISSION
+</div>
+
+<div class="title">
+001
+</div>
+
+<button onclick="enterTransmission()">
+ENTER
+</button>
+
+</div>
+
+<div id="message">
+
+<div class="quote">
+“The animals crossed before the fire.”
+</div>
+
+<div class="signature">
+iENCH
+</div>
+
+</div>
+
+<audio id="audio" loop>
+
+<source src="transmission 001 sound.mp3" type="audio/mpeg">
+
+</audio>
+
+<script>
+
+function enterTransmission(){
+
+document
+.getElementById("intro")
+.classList.add("hidden");
+
+document
+.getElementById("audio")
+.play();
+
+document
+.getElementById("background")
+.style.transform="scale(1.08)";
+
+setTimeout(()=>{
+
+document
+.getElementById("message")
+.classList.add("visible");
+
+},2000);
+
+}
+
+</script>
+
+</body>
+</html>
