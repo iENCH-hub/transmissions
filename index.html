@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,44 +11,40 @@
 <style>
 
 /* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: black;
-    font-family: Arial, Helvetica, sans-serif;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:black;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-/* IMAGE CENTRÉE */
-#background {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 0;
+/* VIDEO */
+#background{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
 }
 
-#background img {
-    max-width: 100%;
-    max-height: 100vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+#background video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 /* GRAIN */
-#grain {
-    position: fixed;
-    inset: 0;
-    opacity: .07;
-    pointer-events: none;
+#grain{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.07;
 
     background-image:
     repeating-linear-gradient(
@@ -57,118 +54,143 @@ html, body {
         transparent 1px,
         transparent 3px
     );
+
+    z-index:2;
 }
 
 /* VIGNETTE */
-#overlay {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
+#overlay{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
 
-    background: radial-gradient(
+    background:
+    radial-gradient(
         circle,
         transparent 20%,
         rgba(0,0,0,.6) 100%
     );
+
+    z-index:3;
 }
 
 /* INTRO */
-#intro {
-    position: absolute;
-    inset: 0;
+#intro{
+    position:absolute;
+    inset:0;
 
-    display: flex;
-    flex-direction: column;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-    justify-content: center;
-    align-items: center;
+    color:white;
+    text-align:center;
 
-    color: white;
-    text-align: center;
+    z-index:10;
 
-    z-index: 10;
-
-    transition: 1.2s;
+    transition:1.2s;
 }
 
-#intro.hidden {
-    opacity: 0;
-    pointer-events: none;
+#intro.hidden{
+    opacity:0;
+    pointer-events:none;
 }
 
-/* TITRE */
-.small {
-    letter-spacing: 6px;
-    font-size: 12px;
-    margin-bottom: 20px;
+/* TITRES */
+
+.small{
+    font-size:12px;
+    letter-spacing:6px;
+    margin-bottom:20px;
 }
 
-.title {
-    font-size: 34px;
-    letter-spacing: 10px;
+.title{
+    font-size:34px;
+    letter-spacing:10px;
 }
 
-/* BOUTON PLAY */
-button {
-    margin-top: 50px;
+/* BOUTON */
 
-    background: none;
-    border: 1px solid rgba(255,255,255,.6);
+button{
 
-    color: white;
-    padding: 14px 34px;
+    margin-top:50px;
 
-    letter-spacing: 4px;
-    cursor: pointer;
+    background:none;
+    border:1px solid rgba(255,255,255,.6);
 
-    transition: .3s;
+    color:white;
+
+    padding:14px 34px;
+
+    cursor:pointer;
+
+    letter-spacing:4px;
+
+    transition:.3s;
 }
 
-button:hover {
-    background: white;
-    color: black;
+button:hover{
+
+    background:white;
+    color:black;
+
 }
 
 /* MESSAGE */
-#message {
-    position: absolute;
-    left: 8%;
-    bottom: 10%;
 
-    max-width: 500px;
+#message{
 
-    color: white;
-    opacity: 0;
+    position:absolute;
 
-    transition: 3s;
+    left:8%;
+    bottom:10%;
 
-    z-index: 5;
+    max-width:500px;
+
+    color:white;
+
+    opacity:0;
+
+    transition:2.5s;
+
+    z-index:5;
+
 }
 
-#message.visible {
-    opacity: 1;
+#message.visible{
+
+    opacity:1;
+
 }
 
-.quote {
-    font-size: 25px;
-    line-height: 1.4;
+.quote{
+
+    font-size:25px;
+    line-height:1.4;
+
 }
 
-.signature {
-    margin-top: 30px;
-    letter-spacing: 5px;
-    opacity: .8;
+.signature{
+
+    margin-top:30px;
+    letter-spacing:5px;
+    opacity:.8;
+
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
-    .quote {
-        font-size: 22px;
-    }
 
-    .title {
-        font-size: 24px;
-    }
+@media(max-width:768px){
+
+.title{
+font-size:24px;
+}
+
+.quote{
+font-size:21px;
+}
+
 }
 
 </style>
@@ -177,59 +199,83 @@ button:hover {
 
 <body>
 
+<!-- VIDEO -->
+
 <div id="background">
-    <video id="bgvideo" autoplay muted loop playsinline>
-        <source src="TRANSMISSION-001.mp4" type="video/mp4">
-    </video>
+
+<video id="bgvideo" muted loop playsinline preload="auto">
+
+<source src="TRANSMISSION-001.mp4" type="video/mp4">
+
+</video>
+
 </div>
 
 <!-- GRAIN -->
+
 <div id="grain"></div>
 
 <!-- VIGNETTE -->
+
 <div id="overlay"></div>
 
 <!-- INTRO -->
+
 <div id="intro">
 
-    <div class="small">TRANSMISSION</div>
+<div class="small">
+TRANSMISSION
+</div>
 
-    <div class="title">001</div>
-<button class="terminal-btn" onclick="enterTransmission()">
+<div class="title">
+001
+</div>
+
+<button onclick="enterTransmission()">
 REVEAL
 </button>
 
 </div>
 
 <!-- MESSAGE -->
+
 <div id="message">
 
-    <div class="quote">
-        “Let's dance on the ruins of our Alchemy”
-    </div>
+<div class="quote">
+“Let's dance on the ruins of our Alchemy”
+</div>
 
-    <div class="signature">
-      i
-    </div>
+<div class="signature">
+i
+</div>
 
 </div>
 
 <!-- AUDIO -->
+
 <audio id="audio" loop>
-    <source src="transmission 001 sound.mp3" type="audio/mpeg">
+
+<source src="transmission 001 sound.mp3" type="audio/mpeg">
+
 </audio>
 
 <script>
 
-function enterTransmission() {
+function enterTransmission(){
 
     document.getElementById("intro").classList.add("hidden");
 
-    document.getElementById("audio").play();
+    const video=document.getElementById("bgvideo");
+    const audio=document.getElementById("audio");
 
-    setTimeout(() => {
+    video.play();
+    audio.play();
+
+    setTimeout(function(){
+
         document.getElementById("message").classList.add("visible");
-    }, 2000);
+
+    },2000);
 
 }
 
@@ -237,3 +283,4 @@ function enterTransmission() {
 
 </body>
 </html>
+```
